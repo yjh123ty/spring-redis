@@ -19,7 +19,6 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
     private RedisTemplate<Serializable, Serializable> redisTemplate;
 
-	@Override
     public void saveUser(final User user) {
         redisTemplate.execute(new RedisCallback<Object>() {
             public Object doInRedis(RedisConnection connection) throws DataAccessException {
@@ -30,7 +29,6 @@ public class UserDAOImpl implements UserDAO {
         });
     }
     
-	@Override
     public User getUser(final long id) {
         return redisTemplate.execute(new RedisCallback<User>() {
             public User doInRedis(RedisConnection connection) throws DataAccessException {
